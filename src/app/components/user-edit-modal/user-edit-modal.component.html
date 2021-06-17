@@ -1,0 +1,47 @@
+<nz-modal
+  [(nzVisible)]="isVisible"
+  [nzTitle]="modalTitle"
+  [nzContent]="modalContent"
+  [nzFooter]="null"
+  (nzOnCancel)="closeModal.emit(); createForm()"
+>
+  <ng-template #modalTitle>Edit user</ng-template>
+
+  <ng-template #modalContent>
+    <form nz-form [formGroup]="userForm" (ngSubmit)="onFormSubmit(userForm)">
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="firstName">First Name</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="firstName" id="firstName" [nzSize]="'large'" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="lastName">Last Name</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="lastName" id="lastName" [nzSize]="'large'" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="email">E-Mail</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <input nz-input formControlName="email" id="email" [nzSize]="'large'" />
+        </nz-form-control>
+      </nz-form-item>
+
+      <nz-form-item>
+        <nz-form-label [nzSm]="6" [nzXs]="24" nzRequired nzFor="age">Age</nz-form-label>
+        <nz-form-control [nzSm]="14" [nzXs]="24">
+          <nz-input-number  [nzSize]="'large'" [nzMin]="1" [nzStep]="1" formControlName="age" id="age"></nz-input-number>
+
+        </nz-form-control>
+      </nz-form-item>
+
+      <button nz-button nzType="primary" [nzLoading]="isLoading" type="submit" [disabled]="userForm.invalid">
+        {{ _editableUser ? 'Save' : 'Create'}}
+      </button>
+    </form>
+  </ng-template>
+
+</nz-modal>

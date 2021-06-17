@@ -1,0 +1,36 @@
+<ng-container *init="popoverState$ | async as popoverState" [ngSwitch]="popoverState">
+  <button
+    nz-popover
+    nzPopoverTitle="{{ popoverState === 'delete' ? confirmationInfo.title : null }}"
+    [(nzPopoverVisible)]="isPopupVisible"
+    (nzPopoverVisibleChange)="changePopoverVisibility()"
+    nzPopoverTrigger="click"
+    [nzPopoverPlacement]="'bottomRight'"
+    [nzPopoverContent]="contentTemplate"
+    nz-button nzType="default" nzShape="circle"
+  >
+    <i nz-icon nzType="ellipsis" nzTheme="outline"></i>
+  </button>
+  <ng-template #contentTemplate>
+      <ng-container *ngSwitchCase="'default'">
+<!--        TODO Rename class-->
+        <div class="edit-button__column">
+          <a nz-button nzType="text" (click)="editClick.emit(); closePopover()">
+            Edit <i nz-icon nzType="edit" nzTheme="outline"></i>
+          </a>
+          <a nz-button nzType="text" (click)="isDeleteConfirmation ? changePopoverState('delete') : deleteClick.emit()">
+            Delete <i nz-icon nzType="delete" nzTheme="outline"></i>
+          </a>
+        </div>
+      </ng-container>
+      <ng-container *ngSwitchCase="'delete'">
+        <p>{{confirmationInfo.description}}</p>
+        <a nz-button nzType="text"
+           [nzDanger]="true"
+           [nzBlock]="true"
+           (click)="deleteClick.emit(); closePopover()">
+          Confirm deletion <i nz-icon nzType="check" nzTheme="outline"></i>
+        </a>
+      </ng-container>
+  </ng-template>
+</ng-container>

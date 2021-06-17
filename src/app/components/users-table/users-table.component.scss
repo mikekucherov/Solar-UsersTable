@@ -1,0 +1,23 @@
+.users-table {
+  position: relative;
+
+  &__head {
+    &_column {
+      &--short {
+        width: 64px;
+      }
+
+      &--avatar {
+        width: 128px;
+      }
+    }
+  }
+
+  &_footer-button {
+    position: absolute;
+
+    // Easy way to place button on the same level with paginator
+    bottom: -48px;
+    left: 0;
+  }
+}

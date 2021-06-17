@@ -1,0 +1,13 @@
+.edit-button {
+  &__column {
+    display: flex;
+    flex-direction: column;
+
+    // To fit entitled popover from NG-ZORRO
+    min-width: 201px;
+  }
+
+  &_confirm-button {
+    display: block;
+  }
+}

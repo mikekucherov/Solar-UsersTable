@@ -1,0 +1,20 @@
+<ng-container *init="{
+users: users$ | async,
+editableUser: editableUser$ | async,
+loading: loading$ | async
+} as params">
+  <app-users-table
+    [usersList]="params.users"
+    (createUser)="createUser()"
+    (editUser)="editUserHandler($event)"
+    (deleteUser)="deleteUser($event)"
+  ></app-users-table>
+  <app-user-edit-modal
+    [isVisible]="!!params.editableUser || isCreateUserModal"
+    [editableUser]="params.editableUser"
+    [isLoading]="params.loading === loadingEventTypes.UserSave"
+    (closeModal)="closeEditModal()"
+    (saveUser)="saveUser($event, params.editableUser)"
+  ></app-user-edit-modal>
+</ng-container>
+
