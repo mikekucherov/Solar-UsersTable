@@ -100,6 +100,7 @@ export class UsersComponent implements OnInit {
         age: formValue.age
       };
 
+      // Here's preloader state update - no service, just a global callback
       updateLoadingState(LoadingEventTypes.UserSave);
 
       this.usersService.createUser(body).subscribe(() => {

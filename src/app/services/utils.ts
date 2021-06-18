@@ -5,7 +5,9 @@ export enum LoadingEventTypes {
   UsersLoading = 'users-loading'
 }
 
-export let loading$ = new BehaviorSubject(null);
+// There's some experimental thing. The idea is create the simpliest object that holds current loading event.
+// The best thing in this approach that you don't have to inject services and can use this object through the whole project.
+export const loading$ = new BehaviorSubject(null);
 
 export const updateLoadingState = (state) => {
   loading$.next(state);

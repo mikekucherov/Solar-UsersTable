@@ -1,27 +1,29 @@
 # SolarUsersTable
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.2.0.
+Test task for Angular Front-end developer position
 
-## Development server
+## Task description
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+Create a table to display users from a local JSON file. Implement UI CRUD. Extra features - filtering, 
+extra columns for avatar and summary. 
 
-## Code scaffolding
+## Libraries
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### NgZorro
+Main components library used for all basic components in the project. I've decided not to spend time on layout
+and concentrate on the logic.
 
-## Build
+### Akita
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Because briefing itself was quite open I've decided to create some "fake back-end requests" and react 
+to user actions. Akita is my favorite way to create such things
 
-## Running unit tests
+### NgXf
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+My day-to-day helper made by Angular Fox - russian Angular influencer and just a cool guy.
 
-## Running end-to-end tests
+## Overview
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Overall in this project I was trying to make table as close as possible to the production yet I didn't 
+spent much time on things like styling and responsiveness. I've tried to implement a few things I've never did on
+an actual project and that was quite interesting experience as well.

@@ -1,15 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter, ChangeDetectionStrategy} from '@angular/core';
 import {SortingColumnTypes, User} from '../../apps/users/interfaces/users.entity';
 
-// TODO Replace to User model
-interface DataItem {
-  index?: number;
-  name: string;
-  chinese: number;
-  math: number;
-  english: number;
-}
-
 interface TableUser extends User {
   index: number;
 }
@@ -57,6 +48,7 @@ export class UsersTableComponent implements OnInit {
       id: SortingColumnTypes.Summary,
       title: 'Summary'
     },
+    // Trick to add an empty column for an edit button
     {}
   ];
 

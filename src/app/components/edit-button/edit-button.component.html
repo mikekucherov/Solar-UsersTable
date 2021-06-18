@@ -13,8 +13,7 @@
   </button>
   <ng-template #contentTemplate>
       <ng-container *ngSwitchCase="'default'">
-<!--        TODO Rename class-->
-        <div class="edit-button__column">
+        <div class="edit-button__buttons-wrapper">
           <a nz-button nzType="text" (click)="editClick.emit(); closePopover()">
             Edit <i nz-icon nzType="edit" nzTheme="outline"></i>
           </a>
