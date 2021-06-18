@@ -10,10 +10,12 @@ import {NzPopoverModule} from 'ng-zorro-antd/popover';
 import { UserEditModalComponent } from './user-edit-modal/user-edit-modal.component';
 import {NzModalModule} from 'ng-zorro-antd/modal';
 import {NzInputModule} from 'ng-zorro-antd/input';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {NzInputNumberModule} from 'ng-zorro-antd/input-number';
 import {NzFormModule} from 'ng-zorro-antd/form';
 import {NzAvatarModule} from 'ng-zorro-antd/avatar';
+import { TableFilterComponent } from './table-filter/table-filter.component';
+import {NzSliderModule} from 'ng-zorro-antd/slider';
 
 const COMPONENTS = [
   UsersTableComponent,
@@ -24,7 +26,7 @@ const COMPONENTS = [
 
 
 @NgModule({
-  declarations: [COMPONENTS],
+  declarations: [COMPONENTS, TableFilterComponent],
   imports: [
     CommonModule,
     NzTableModule,
@@ -37,8 +39,10 @@ const COMPONENTS = [
     NzInputNumberModule,
     NzFormModule,
     NzAvatarModule,
-    ReactiveFormsModule
+    NzSliderModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
-  exports: [COMPONENTS]
+  exports: [COMPONENTS, TableFilterComponent]
 })
 export class ComponentsModule { }

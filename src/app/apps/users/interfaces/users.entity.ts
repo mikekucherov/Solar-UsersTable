@@ -18,3 +18,8 @@ export enum SortingColumnTypes {
   Avatar = 'avatar',
   Summary = 'summary'
 }
+
+export interface TableFilters {
+  search: string;
+  ageRange: number[];
+}

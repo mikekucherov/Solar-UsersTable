@@ -1,0 +1,46 @@
+<ng-container *init="{ filter: filtersValueChange$ | async } as params">
+  <button
+    nz-popover
+    nzPopoverTitle="Filters"
+    [(nzPopoverVisible)]="isFiltersVisible"
+    nzPopoverTrigger="click"
+    [nzPopoverPlacement]="'bottomLeft'"
+    [nzPopoverContent]="contentTemplate"
+    nz-button nzType="default"
+  >
+    Filters
+  </button>
+  <ng-template #contentTemplate>
+    <div class="filters">
+      <!--    SEARCH-->
+      <div class="filters__row">
+        <input nz-input [nzSize]="'large'" placeholder="Search"
+               [(ngModel)]="params.filter.search"
+               (ngModelChange)="updateFilters('search', $event, params.filter)"/>
+      </div>
+      <!--    AGE FILTER-->
+      <div class="filters__row">
+        <nz-form-label [nzSm]="6" [nzXs]="24">
+          Age
+        </nz-form-label>
+        <nz-slider
+          class="filters_slider"
+          nzRange
+          [nzStep]="1"
+          [(ngModel)]="rangeValue"
+          (nzOnAfterChange)="updateFilters('ageRange', $event, params.filter)"
+        ></nz-slider>
+      </div>
+      <button
+        *ngIf="!!params.filter.search || !!params.filter.ageRange.length"
+        class="filters_reset-button"
+        nz-button nzType="default"
+        [nzBlock]="true"
+        (click)="resetFilters()"
+      >
+        Reset filters <i nz-icon nzType="reload" nzTheme="outline"></i>
+      </button>
+    </div>
+  </ng-template>
+</ng-container>
+

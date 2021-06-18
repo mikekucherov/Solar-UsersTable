@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {UsersService} from './users.service';
 import {map, tap} from 'rxjs/operators';
-import {User} from './interfaces/users.entity';
+import {TableFilters, User} from './interfaces/users.entity';
 import {ActivatedRoute, Router} from '@angular/router';
-import {combineLatest} from 'rxjs';
-import {loading$, LoadingEventTypes, updateLoadingState} from '../../services/utils';
+import {BehaviorSubject, combineLatest, Observable} from 'rxjs';
+import {isBetweenRange, loading$, LoadingEventTypes, updateLoadingState} from '../../services/utils';
 
 @Component({
   selector: 'app-users',
@@ -12,7 +12,27 @@ import {loading$, LoadingEventTypes, updateLoadingState} from '../../services/ut
   styleUrls: ['./users.component.scss']
 })
 export class UsersComponent implements OnInit {
-  users$ = this.usersService.users$.pipe(tap(v => console.log('USERS', v)));
+  tableFilters$: BehaviorSubject<TableFilters> = new BehaviorSubject({
+    search: '',
+    ageRange: []
+  });
+
+  users$: Observable<User[]> = combineLatest([this.usersService.users$, this.tableFilters$]).pipe(map(([users, filters]) => {
+    let performedUsers = users;
+
+    if (filters.search) {
+      performedUsers = performedUsers.filter(user => {
+        const fullName = `${user.name.first} ${user.name.last}`.toLocaleLowerCase();
+        return fullName.match(filters.search.toLocaleLowerCase());
+      });
+    }
+
+    if (filters.ageRange.length) {
+      performedUsers = performedUsers.filter(user => isBetweenRange(user.age, filters.ageRange));
+    }
+
+    return performedUsers;
+  }));
 
   loading$ = loading$;
 

@@ -3,6 +3,10 @@ users: users$ | async,
 editableUser: editableUser$ | async,
 loading: loading$ | async
 } as params">
+  <app-table-filter
+    class="users__filter"
+    (filtersValueChange$)="tableFilters$.next($event)"
+  ></app-table-filter>
   <app-users-table
     [usersList]="params.users"
     (createUser)="createUser()"
