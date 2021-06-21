@@ -24,6 +24,6 @@ My day-to-day helper made by Angular Fox - russian Angular influencer and just a
 
 ## Overview
 
-Overall in this project I was trying to make table as close as possible to the production yet I didn't 
+Overall in this project I was trying to make table as close to the working prototype as possible yet I didn't 
 spent much time on things like styling and responsiveness. I've tried to implement a few things I've never did on
 an actual project and that was quite interesting experience as well.
